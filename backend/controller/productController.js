@@ -1,7 +1,7 @@
 const Product = require("../models/productModel");
 
 // add products
-exports.addProducts = async (req, res) => {
+exports.addProducts = async (req, res,next) => {
   const product = await Product.create(req.body);
   res.status(201).json({
     success: true,
@@ -10,7 +10,7 @@ exports.addProducts = async (req, res) => {
 };
 
 // getProducts
-exports.getAllProducts = async (req, res) => {
+exports.getAllProducts = async (req, res,next) => {
   const product = await Product.find();
 
   res.status(200).json({
@@ -20,7 +20,7 @@ exports.getAllProducts = async (req, res) => {
 };
 
 // update products
-exports.updateProducts = async (req, res) => {
+exports.updateProducts = async (req, res,next) => {
   let product = await Product.findById(req.params.id);
 
   if (!product) {
